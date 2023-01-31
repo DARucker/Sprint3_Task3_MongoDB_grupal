@@ -425,11 +425,11 @@ public class Service implements Serv{
             // 2) SUM SCTOCK VALUE
             for (FlowerShop_stock p : productList) {
                 if (p.getDecoration() != null) {
-                    result += p.getDecoration().getQuantity() * p.getDecoration().getQuantity();
+                    result += p.getDecoration().getPrice() * p.getDecoration().getQuantity();
                 } else if (p.getFlower() != null) {
-                    result += p.getFlower().getQuantity() * p.getFlower().getQuantity();
+                    result += p.getFlower().getPrice() * p.getFlower().getQuantity();
                 } else if (p.getTree() != null) {
-                    result += p.getTree().getQuantity() * p.getTree().getQuantity();
+                    result += p.getTree().getPrice() * p.getTree().getQuantity();
                 }
 
             }

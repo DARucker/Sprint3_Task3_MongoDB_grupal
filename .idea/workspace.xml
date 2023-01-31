@@ -6,13 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="508f8b8c-0e63-4943-94f6-2eb7b39f9faa" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprint3Task1TXT" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Sprint3Task3MONGO/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sprint3Task3MONGO/org/example/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Sprint3Task3MONGO/org/example/domain/FlowerShop_stock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sprint3Task3MONGO/org/example/domain/FlowerShop_stock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Sprint3Task3MONGO/org/example/domain/ProductforSale.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sprint3Task3MONGO/org/example/domain/ProductforSale.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Sprint3Task3MONGO/org/example/domain/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sprint3Task3MONGO/org/example/domain/Ticket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Sprint3Task3MONGO/org/example/repository/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sprint3Task3MONGO/org/example/repository/Repository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Sprint3Task3MONGO/org/example/service/Serv.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sprint3Task3MONGO/org/example/service/Serv.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Sprint3Task3MONGO/org/example/service/Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sprint3Task3MONGO/org/example/service/Service.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
