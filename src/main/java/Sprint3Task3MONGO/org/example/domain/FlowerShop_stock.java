@@ -2,9 +2,6 @@ package Sprint3Task3MONGO.org.example.domain;
 
 import org.bson.types.ObjectId;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class FlowerShop_stock {
     private ObjectId id;
     private Flower flower;

@@ -17,9 +17,7 @@ public class Ticket {
       this.totalPrice = totalPrice;
    }
    public Ticket(){
-      this.id = id;
       this.productforSales = new ArrayList<>();
-      this.totalPrice = totalPrice;
    }
 
 

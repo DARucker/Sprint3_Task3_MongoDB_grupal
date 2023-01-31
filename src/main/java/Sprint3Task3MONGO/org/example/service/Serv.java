@@ -23,13 +23,6 @@ public interface Serv {
 
     //region METHODS: CREATE
     /**
-     * Mètode per crear la FlowerShop.
-     *
-     * @param name El string amb el nom de la floristeria.
-     */
-    void createFlowerShop(String name);
-
-    /**
      * Metode per crear un nou tipus de producte, de qualsevol mena.
      *
      * @param product Necessita una classe del tipus de producte que s'ha de crear.
@@ -55,7 +48,7 @@ public interface Serv {
      * @return Tipus List<Product>. Llista de tots els productes.
      * @throws GetMethodException En el cas que hi hagi algun error, saltarà aquesta execpció.
      */
-    List<Product> getAllProducts() throws GetMethodException;
+    List<FlowerShop_stock> getAllProducts() throws GetMethodException;
 
     /**
      * Mètode per aconseguir la llista de totes les decoracions.
@@ -100,22 +93,15 @@ public interface Serv {
     /**
      * Mètode per actualitzar la info d'un producte.
      *
-     * @param product Necessita la classe del producte que s'ha de modificar.
+     * @param ticket agafa els productes de dins del ticket, el metode s'instancia cada vegada que es crea un ticket.
      * @return Tipus boolena. false = hi hagut algun error; true = tot ha sortit bé.
      */
-    boolean updateProduct(Product product);
+    boolean updateStock(Ticket ticket);
 
     //endregion METHODS: UPDATE
 
 
     //region METHODS: OTHERS (INIT, SUM,...)
-    /**
-     * Mètode per inicialitzar la floristeria.
-     *
-     * @return Tipus string. Si retorna null vol dir que és la primera vegada, si no, retorna el nom de la floristeria.
-     */
-    String init();
-
     /**
      * Mètode per sumar el valor de tot el stock de la floristeria.
      *
@@ -140,6 +126,8 @@ public interface Serv {
      * @throws SumMethodException En el cas que hi hagi algun error, saltarà aquesta execpció.
      */
     double sumAllTickets() throws SumMethodException;
+
+    boolean checkExistOnTicket(List<ProductforSale> ticketDetail, String name);
 
     //endregion METHODS: OTHERS (INIT, SUM,...)
 

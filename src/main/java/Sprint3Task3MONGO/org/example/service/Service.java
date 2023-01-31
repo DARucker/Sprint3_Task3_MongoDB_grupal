@@ -9,8 +9,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Service{
-   //region ATTRIBUTES
+public class Service implements Serv{
+    //region ATTRIBUTES
     private static Repository repoCls;
 
     //endregion ATTRIBUTES
@@ -33,34 +33,34 @@ public class Service{
         //region ACTIONS
         try {
             // 1) GET ALL PRODUCTS OF SAME TYPE
-            if (proSale.getProduct().getClass() == Decoration.class) {
+            if (proSale.getProduct().getDecoration() != null) {
                 decoList = new ArrayList<>(getDecoProducts());
 
                 // 2) CHECK PRODUCT STOCK
-                while (i < decoList.size() || !contin) {
-                    if (decoList.get(i).getId() == proSale.getProduct().getId()) {
+                while (i < decoList.size() && !contin) {
+                    if (decoList.get(i).getName().equals(proSale.getProduct().getDecoration().getName())) {
                         contin = true;
                         resul = proSale.getQuantity() <= decoList.get(i).getQuantity();
                     }
                     i++;
                 }
-            } else if (proSale.getProduct().getClass() == Flower.class) {
+            } else if (proSale.getProduct().getFlower() != null) {
                 flowerList = new ArrayList<>(getFlowerProducts());
 
                 // 2) CHECK PRODUCT STOCK
-                while (i < flowerList.size() || !contin) {
-                    if (flowerList.get(i).getId() == proSale.getProduct().getId()) {
+                while (i < flowerList.size() && !contin) {
+                    if (flowerList.get(i).getName().equals(proSale.getProduct().getFlower().getName())) {
                         contin = true;
                         resul = proSale.getQuantity() <= flowerList.get(i).getQuantity();
                     }
                     i++;
                 }
-            } else if (proSale.getProduct().getClass() == Tree.class) {
+            } else if (proSale.getProduct().getTree() != null) {
                 treeList = new ArrayList<>(getTreeProducts());
 
                 // 2) CHECK PRODUCT STOCK
-                while (i < treeList.size() || !contin) {
-                    if (treeList.get(i).getId() == proSale.getProduct().getId()) {
+                while (i < treeList.size() && !contin) {
+                    if (treeList.get(i).getName().equals(proSale.getProduct().getTree().getName())) {
                         contin = true;
                         resul = proSale.getQuantity() <= treeList.get(i).getQuantity();
                     }
@@ -79,36 +79,56 @@ public class Service{
         return resul;
     }
 
-    //endregion METHODS: CHECK
 
-
-    //region METHODS: CREATE
-
-    @Override
-    public void createFlowerShop(String name) {
+    public boolean checkExistOnTicket(List<ProductforSale> proSafeListIn, String nameIn){
         //region DEFINITION VARIABLES
+        boolean resul = false, exit = false;
+        int index = 0;
 
         //endregion DEFINITION VARIABLES
 
 
         //region ACTIONS
-        try {
-            // INIT VARIABLES
-            if(repoCls == null) {
-                repoCls = new Repository();
-            }
+        try{
+            do{
+                if (proSafeListIn.get(index).getProduct().getDecoration() != null) {
+                    if(proSafeListIn.get(index).getProduct().getDecoration().getName().equals(nameIn)){
+                        exit =true;
+                        resul = true;
+                    }
+                    }
+                else if (proSafeListIn.get(index).getProduct().getTree() != null) {
+                if(proSafeListIn.get(index).getProduct().getTree().equals(nameIn)){
+                    exit =true;
+                    resul = true;
+                }
+                } else if (proSafeListIn.get(index).getProduct().getFlower() != null) {
+                if(proSafeListIn.get(index).getProduct().getFlower().equals(nameIn)){
+                    exit =true;
+                    resul = true;
+                }
+                }
 
-            // CALL REPOSITORY METHOD
-            repoCls.createFlowerShop(name);
+                index++;
+            }while (proSafeListIn.size() < index || exit != true);
 
-        } catch (Exception ex) {
-            //TODO control errors
+
+        }catch (Exception ex){
+
         }
-
         //endregion ACTIONS
+
+
+        // OUT
+        return resul;
+
 
     }
 
+    //endregion METHODS: CHECK
+
+
+    //region METHODS: CREATE
 
     @Override
     public boolean createProduct(Product product) {
@@ -125,17 +145,17 @@ public class Service{
 
             // CALL REPOSITORY METHODS
             if (product.getClass() == Decoration.class) {
-                if (!repoCls.findbyName(product.getName(), "Decoration")) {
+                if (repoCls.findbyName(product.getName(), "Decoration") == false) {
                     repoCls.createDeco((Decoration) product);
                     resul = true;
                 }
             } else if (product.getClass() == Flower.class) {
-                if (!repoCls.findbyName(product.getName(), "Flower")) {
+                if (repoCls.findbyName(product.getName(), "Flower") == false) {
                     repoCls.createFlower((Flower) product);
                     resul = true;
                 }
             } else if (product.getClass() == Tree.class) {
-                if (!repoCls.findbyName(product.getName(), "Tree")) {
+                if (repoCls.findbyName(product.getName(), "Tree") == false) {
                     repoCls.createTree((Tree) product);
                     resul = true;
                 }
@@ -192,9 +212,9 @@ public class Service{
 
     //region METHODS: GET
     @Override
-    public List<Product> getAllProducts() throws GetMethodException {
+    public List<FlowerShop_stock> getAllProducts() throws GetMethodException {
         //region DEFINITION VARIABLES
-        List<Product> productList;
+        List<FlowerShop_stock> productList;
 
         //endregion DEFINITION VARIABLES
 
@@ -273,7 +293,7 @@ public class Service{
     public int[] getStock() throws GetMethodException {
         //region DEFINITION VARIABLES
         int[] results = new int[3];
-        List<Product> productList;
+        List<FlowerShop_stock> productList;
 
         //endregion DEFINITION VARIABLES
 
@@ -287,13 +307,13 @@ public class Service{
             productList = new ArrayList<>(repoCls.getAllProducts());
 
             // 3) SUM ALL STOCK
-            for (Product p : productList) {
-                if (p.getClass() == Decoration.class) {
-                    results[0] += p.getQuantity();
-                } else if (p.getClass() == Flower.class) {
-                    results[1] += p.getQuantity();
-                } else if (p.getClass() == Tree.class) {
-                    results[2] += p.getQuantity();
+            for (FlowerShop_stock p : productList) {
+                if (p.getDecoration() != null) {
+                    results[0] += p.getDecoration().getQuantity();
+                } else if (p.getFlower() != null) {
+                    results[1] += p.getFlower().getQuantity();
+                } else if (p.getTree() != null) {
+                    results[2] += p.getTree().getQuantity();
                 }
             }
 
@@ -339,32 +359,35 @@ public class Service{
     //region METHODS: UPDATE
 
     @Override
-    public boolean updateProduct(Product product) {
+    public boolean updateStock(Ticket ticket) {
         //region DEFINITION VARIABLES
-        boolean result;
+        boolean result = false;
 
         //endregion DEFINITION VARIABLES
 
 
         //region ACTIONS
         try {
-            // INIT VARIABLES
+            // INIT
             repoCls = new Repository();
 
-            // CALL REPOSITORY METHOD
-            if (product.getClass() == Decoration.class) {
-                repoCls.updateDeco((Decoration) product);
-                result = true;
-            } else if (product.getClass() == Flower.class) {
-                repoCls.updateFlower((Flower) product);
-                result = true;
-            } else if (product.getClass() == Tree.class) {
-                repoCls.updateTree((Tree) product);
-                result = true;
-            } else {
-                result = false;
+            // ITERATE FOR ALL PRODUCTS
+            for (ProductforSale p : ticket.getProductforSales()) {
+                int updatedquantity = 0;
+
+                if (p.getProduct().getDecoration() != null) {
+                    updatedquantity = p.getProduct().getDecoration().getQuantity() - p.getQuantity();
+                    repoCls.updateDeco(p.getProduct().getDecoration(), updatedquantity);
+                } else if (p.getProduct().getFlower() != null) {
+                    updatedquantity = p.getProduct().getFlower().getQuantity() - p.getQuantity();
+                    repoCls.updateFlower(p.getProduct().getFlower(), updatedquantity);
+                } else if (p.getProduct().getTree() != null) {
+                    updatedquantity = p.getProduct().getTree().getQuantity() - p.getQuantity();
+                    repoCls.updateTree(p.getProduct().getTree(), updatedquantity);
+                }
             }
 
+            result = true;
         } catch (Exception ex) {
             result = false;
         }
@@ -374,6 +397,7 @@ public class Service{
 
         // OUT
         return result;
+
     }
 
     //endregion METHODS: UPDATE
@@ -382,38 +406,10 @@ public class Service{
     //region METHODS: OTHERS (INIT, SUM,...)
 
     @Override
-    public String init() {
-        //region DEFINITION VARIABLES
-        String name = null;
-
-        //endregion DEFINITION VARIABLES
-
-
-        //region ACTIONS
-        try {
-            // INIT VARIABLES
-            repoCls = new Repository();
-
-            // CALL REPOSITORY METHOD
-            name = repoCls.init();
-
-        } catch (Exception ex) {
-            //TODO control errors
-        }
-
-        //endregion ACTIONS
-
-
-        // OUT
-        return name;
-
-    }
-
-    @Override
     public double sumStock() throws SumMethodException {
         //region DEFINITION VARIABLES
         double result = 0;
-        List<Product> productList;
+        List<FlowerShop_stock> productList;
 
         //endregion DEFINITION VARIABLES
 
@@ -427,8 +423,15 @@ public class Service{
             productList = new ArrayList<>(repoCls.getAllProducts());
 
             // 2) SUM SCTOCK VALUE
-            for (Product p : productList) {
-                result += p.getQuantity() * p.getPrice();
+            for (FlowerShop_stock p : productList) {
+                if (p.getDecoration() != null) {
+                    result += p.getDecoration().getQuantity() * p.getDecoration().getQuantity();
+                } else if (p.getFlower() != null) {
+                    result += p.getFlower().getQuantity() * p.getFlower().getQuantity();
+                } else if (p.getTree() != null) {
+                    result += p.getTree().getQuantity() * p.getTree().getQuantity();
+                }
+
             }
 
         } catch (Exception ex) {
@@ -475,6 +478,7 @@ public class Service{
      *
      * @return El valor de la suma. NOTA! Si el valor retornat és
      * @throws SumMethodException En el cas que hi hagi algun error, saltarà aquesta execpció.
+     */
     @Override
     public double sumAllTickets() throws SumMethodException {
         //region DEFINITION VARIABLES
@@ -511,7 +515,7 @@ public class Service{
 
     //endregion METHODS: OTHERS (SUM,...)
 
-/*
+
     //region PRIVATE METHODS
 
     /**
@@ -560,7 +564,7 @@ public class Service{
     private List<Flower> getFlowerProducts() throws IOException {
         //region DEFINITION VARIABLES
         List<Flower> flowerList;
-        List<Product> productList;
+        List<FlowerShop_stock> productList;
 
         //endregion DEFINITION VARIABLES
 
@@ -574,9 +578,9 @@ public class Service{
         productList = new ArrayList<>(repoCls.getAllProducts());
 
         // 2) FIND DECORATION PRODUCTS
-        for (Product p : productList) {
-            if (p.getClass() == Flower.class) {
-                flowerList.add((Flower) p);
+        for (FlowerShop_stock p : productList) {
+            if (p.getFlower() != null) {
+                flowerList.add(p.getFlower());
             }
         }
 
@@ -597,7 +601,7 @@ public class Service{
     private List<Tree> getTreeProducts() throws IOException {
         //region DEFINITION VARIABLES
         List<Tree> treeList;
-        List<Product> productList;
+        List<FlowerShop_stock> productList;
 
         //endregion DEFINITION VARIABLES
 
@@ -612,9 +616,9 @@ public class Service{
         productList = new ArrayList<>(repoCls.getAllProducts());
 
         // 2) FIND DECORATION PRODUCTS
-        for (Product p : productList) {
-            if (p.getClass() == Tree.class) {
-                treeList.add((Tree) p);
+        for (FlowerShop_stock p : productList) {
+            if (p.getTree() != null) {
+                treeList.add(p.getTree());
             }
         }
 
@@ -632,42 +636,7 @@ public class Service{
      * @param ticket Classe del tipus Ticket amb la llista de tots els productes que s'han comprat.
      * @return Tipus boolean. False = hi ha hagut algun problema; True = No hi hagut cap problema.
      */
-    private boolean updateStock(Ticket ticket) {
-        //region DEFINITION VARIABLES
-        boolean result = false;
 
-        //endregion DEFINITION VARIABLES
-
-
-        //region ACTIONS
-        try {
-            // INIT
-            repoCls = new Repository();
-
-            // ITERATE FOR ALL PRODUCTS
-            for (ProductforSale p : ticket.getProductforSales()) {
-                p.getProduct().setQuantity(p.getProduct().getQuantity() - p.getQuantity());
-
-                if (p.getProduct().getClass() == Decoration.class) {
-                    repoCls.updateDeco((Decoration) p.getProduct());
-                } else if (p.getProduct().getClass() == Flower.class) {
-                    repoCls.updateFlower((Flower) p.getProduct());
-                } else if (p.getProduct().getClass() == Tree.class) {
-                    repoCls.updateTree((Tree) p.getProduct());
-                }
-            }
-
-        } catch (Exception ex) {
-            result = false;
-        }
-
-        //endregion ACTIONS
-
-
-        // OUT
-        return result;
-
-    }
 
     //endregion PRIVATE METHODS
 

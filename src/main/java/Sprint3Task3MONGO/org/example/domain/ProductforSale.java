@@ -1,32 +1,34 @@
 package Sprint3Task3MONGO.org.example.domain;
 
 public class ProductforSale {
-    private int id;
-    private Product product;
+
+    private FlowerShop_stock product;
     private int quantity;
 
-    public ProductforSale(Product product, int quantity) {
+    public ProductforSale(FlowerShop_stock product, int quantity) {
         this.product = product;
         this.quantity = quantity;
     }
 
-    public int getId() {
-        return id;
+    public ProductforSale() {
     }
 
-    public Product getProduct() {
-        return product;
+     public FlowerShop_stock getProduct() {
+        return this.product;
     }
     public double getPrice(){
-        return product.getPrice();
+        if (this.product.getDecoration() != null) {
+            return product.getDecoration().getPrice();
+        } else if (this.product.getFlower() != null) {
+            return product.getFlower().getPrice();
+        } else{
+            return product.getTree().getPrice();
+        }
+
     }
 
     public int getQuantity() {
         return quantity;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
     }
 
     public void setQuantity(int quantity) {

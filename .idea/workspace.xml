@@ -5,26 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="508f8b8c-0e63-4943-94f6-2eb7b39f9faa" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Sprint3Task3MONGO/org/example/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Sprint3Task3MONGO/org/example/domain/Decoration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Sprint3Task3MONGO/org/example/domain/Flower.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Sprint3Task3MONGO/org/example/domain/Product.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Sprint3Task3MONGO/org/example/domain/ProductforSale.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Sprint3Task3MONGO/org/example/domain/Ticket.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Sprint3Task3MONGO/org/example/domain/Tree.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Sprint3Task3MONGO/org/example/exception/GetMethodException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Sprint3Task3MONGO/org/example/exception/SumMethodException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Sprint3Task3MONGO/org/example/repository/Repo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Sprint3Task3MONGO/org/example/repository/Repository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Sprint3Task3MONGO/org/example/service/Serv.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Sprint3Task3MONGO/org/example/service/Service.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sprint3Task1TXT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Sprint3Task3MONGO/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sprint3Task3MONGO/org/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Sprint3Task3MONGO/org/example/domain/FlowerShop_stock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sprint3Task3MONGO/org/example/domain/FlowerShop_stock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Sprint3Task3MONGO/org/example/domain/ProductforSale.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sprint3Task3MONGO/org/example/domain/ProductforSale.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Sprint3Task3MONGO/org/example/domain/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sprint3Task3MONGO/org/example/domain/Ticket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Sprint3Task3MONGO/org/example/repository/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sprint3Task3MONGO/org/example/repository/Repository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Sprint3Task3MONGO/org/example/service/Serv.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sprint3Task3MONGO/org/example/service/Serv.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Sprint3Task3MONGO/org/example/service/Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sprint3Task3MONGO/org/example/service/Service.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,14 +46,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/pauca/IntelliJ_repository/ItAcademy/Sprint3/Sprint3Task3MONGO&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "C:/Users/pauca/IntelliJ_repository/ItAcademy/Sprint3/Sprint3Task1TXT"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\pauca\IntelliJ_repository\ItAcademy\Sprint3\Sprint3Task3MONGO\src\main\java\Sprint3Task3MONGO\org" />
@@ -106,5 +95,31 @@
       <updated>1675074953158</updated>
     </task>
     <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Sprint3Task3MONGO/org/example/repository/Repository.java</url>
+          <line>61</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Sprint3Task3MONGO/org/example/service/Service.java</url>
+          <line>499</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Sprint3Task3MONGO/org/example/service/Service.java</url>
+          <line>496</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="Sprint3Task3MONGO.org.example.exception.SumMethodException" memberName="cause" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
 </project>

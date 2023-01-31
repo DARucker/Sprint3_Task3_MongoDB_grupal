@@ -13,48 +13,30 @@ import java.util.*;
 
 public class Main {
 
+	// region variables
 	private static Serv service;
 	private static Scanner inputKey;
-	private static String shopName;
-	private static List<Product> products = new ArrayList<>();
+	private static List<FlowerShop_stock> products = new ArrayList<>();
+
 
 	public static void main(String[] args) {
 
-		//wellcome();
-		Repository repoCls = new Repository();
-
-		// CALL REPOSITORY METHOD
-		Flower f1 = new Flower("f1", 3, 4, "rosa");
-		Tree t1 = new Tree("t1", 3, 4, 5);
-		Decoration d1 = new Decoration("d1", 3, 4, "mat");
-		/*repoCls.createDeco(d1);
-		repoCls.createFlower(f1);
-		repoCls.createTree(t1);*/
-		System.out.println(repoCls.getAllProducts());
-		System.out.println(repoCls.getByName("f1", "Flower"));
-		repoCls.updateFlower(f1, 2);
-		System.out.println(repoCls.getByName("f1", "Flower"));
+		wellcome();
 	}
 
-	/*public static void wellcome() {
+	public static void wellcome() {
 
 		service = new Service();
-		shopName = service.init();
-		if (shopName == null) {
-			shopName = captureString("Insert Flower Shop name");
-			service.createFlowerShop(shopName);
-		}
-
-		System.out.println("\n" + "Bienvenido al sistema de gestion de Floristeria " + shopName + "\n");
+		System.out.println("\n" + "Bienvenido al sistema de gestion de Floristeria\n");
 		mainMenu();
 	}
 
 	public static void mainMenu() {
 
-		System.out.println("\n" + "** Main menu **" + "\n");
-		System.out.println("1. Product");
-		System.out.println("2. Invoice");
-		System.out.println("3. Exit");
+		System.out.println("\n" + "** Main menu **" + "\n" + "\n" +
+				"1. Product"+ "\n" +
+				"2. Invoice"+ "\n" +
+				"3. Exit"+ "\n");
 
 		int choice = captureNumber("Select task: " + "\n");
 
@@ -70,34 +52,34 @@ public class Main {
 		}
 
 		/*
-		 * >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Stock menues
-		 * <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+		 * >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Stock menues  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+		 */
 
 	}
 
 	public static void productMenu() {
-		System.out.println("\n" + "** Product menu **" + "\n");
-		System.out.println("1. Create product");
-		System.out.println("2. List products");
-		System.out.println("3. Valuate stock");
-		System.out.println("4. Back");
+		System.out.println("\n" + "** Product menu **" + "\n" + "\n" +
+				"1. Create product" + "\n" +
+				"2. List products" + "\n" +
+				"3. Valuate stock" + "\n" +
+				"4. Back");
 
 		int choice = captureNumber("Select task: " + "\n");
 
 		switch (choice) {
 
-		case 1:
-			productCreate();
-			break;
-		case 2:
-			productList();
-			break;
-		case 3:
-			productSum();
-			break;
-		case 4:
-			wellcome();
-			break;
+			case 1:
+				productCreate();
+				break;
+			case 2:
+				productList();
+				break;
+			case 3:
+				productSum();
+				break;
+			case 4:
+				wellcome();
+				break;
 		}
 	}
 
@@ -109,7 +91,7 @@ public class Main {
 			System.out.println("\n" + "** Stock ammount menu **" + "\n");
 			System.out.println("The stock ammount is: " + totalStock + "\n");
 		} catch (SumMethodException e) {
-			System.err.println("\n" + "There has been an error, please try again" + "\n");
+			System.err.println("\n" + "Error while adding stock" + "\n");
 		}
 
 		mainMenu();
@@ -120,13 +102,13 @@ public class Main {
 		System.out.println("\n" + "** Stock list **" + "\n");
 		try {
 			products = service.getAllProducts();
-		
-		products.forEach(System.out::println);
-		System.out.println("\n");
+
+			products.forEach(System.out::println);
+			System.out.println("\n");
 		} catch (GetMethodException e) {
-			System.err.println("\n" + "There has been an error, please try again" + "\n");
+			System.err.println("\n" + "Error creating stock list" + "\n");
 		}
-		
+
 		mainMenu();
 	}
 
@@ -142,18 +124,18 @@ public class Main {
 
 		switch (choice) {
 
-		case 1:
-			decorationCreate();
-			break;
-		case 2:
-			flowerCreate();
-			break;
-		case 3:
-			treeCreate();
-			break;
-		case 4:
-			productMenu();
-			break;
+			case 1:
+				decorationCreate();
+				break;
+			case 2:
+				flowerCreate();
+				break;
+			case 3:
+				treeCreate();
+				break;
+			case 4:
+				productMenu();
+				break;
 		}
 	}
 
@@ -195,6 +177,7 @@ public class Main {
 			System.out.println("\n" + "The product already exists" + "\n");
 		} else {
 			System.out.println("\n" + "Hubo un problema al crear el producto. Por favor verifique el stock." + "\n");
+
 		}
 		mainMenu();
 
@@ -217,6 +200,7 @@ public class Main {
 			System.out.println("\n" + "The product already exists" + "\n");
 		} else {
 			System.out.println("\n" + "Hubo un problema al crear el producto. Por favor verifique el stock." + "\n");
+
 		}
 		mainMenu();
 
@@ -226,26 +210,26 @@ public class Main {
 	 * >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Invoice menues  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 	 */
 
-	/*public static void invoiceMenu() {
+	public static void invoiceMenu() {
 
-		System.out.println("\n" + "** Invoice menu **" + "\n");
-		System.out.println("1. Create invoice");
-		System.out.println("2. Total ammount of sales");
-		System.out.println("3. Back");
+		System.out.println("\n" + "** Invoice menu **" + "\n" + "\n" +
+				"1. Create invoice"+ "\n" +
+				"2. Total ammount of sales" + "\n" +
+				"3. Back");
 
 		int choice = captureNumber("Select task: " + "\n");
 
 		switch (choice) {
 
-		case 1:
-			invoiceCreate();
-			break;
-		case 2:
-			invoiceSum();
-			break;
-		case 3:
-			wellcome();
-			break;
+			case 1:
+				invoiceCreate();
+				break;
+			case 2:
+				invoiceSum();
+				break;
+			case 3:
+				wellcome();
+				break;
 		}
 	}
 
@@ -257,26 +241,45 @@ public class Main {
 		try {
 			products = service.getAllProducts();
 		} catch (GetMethodException e) {
-			System.err.println("\n" + "There has been an error, please try again" + "\n");
-		} 
-		Map<Integer, Product> productsToShow = new HashMap<>();
+			System.err.println("\n" + "Unable to show product list" + "\n");
+		}
+
+		Map<Integer, FlowerShop_stock> productsToShow = new HashMap<>();
 		List<ProductforSale> ticketDetail = new ArrayList<>();
 		System.out.println("\n" + "** Create ticket **" + "\n");
 		System.out.println("Products to include in ticket: " + "\n");
 
-		for (Product product : products) {
-			order++;
-			productsToShow.put(order, product);
-			System.out.println("id: " + order + " name: " + product.getName() + " price: " + product.getPrice());
+		// No agrega a la lista los prods sin stock
+		for (FlowerShop_stock product : products) {
+			if (product.getDecoration() != null && product.getDecoration().getQuantity() > 0) {
+				order++;
+				productsToShow.put(order, product);
+				System.out.println("id: " + order + " name: " + product.getDecoration().getName()
+						+ " price: " + product.getDecoration().getPrice() + " stock: "
+						+ product.getDecoration().getQuantity());
+			} else if (product.getFlower() != null && product.getFlower().getQuantity() > 0) {
+				order++;
+				productsToShow.put(order, product);
+				System.out.println("id: " + order + " name: " + product.getFlower().getName()
+						+ " price: " + product.getFlower().getPrice() + " stock: "
+						+ product.getFlower().getQuantity());
+			} else if (product.getTree() != null && product.getTree().getQuantity() > 0) {
+				order++;
+				productsToShow.put(order, product);
+				System.out.println("id: " + order + " name: " + product.getTree().getName()
+						+ " price: " + product.getTree().getPrice() + " stock: "
+						+ product.getTree().getQuantity());
+			}
+
 		}
 
 		do {
-			selection = captureNumber("Select product from list or 0 to finish: " + "\n");
+			selection = captureNumber("\n" + "Select product from list or 0 to finish: " + "\n");
+
 			if (selection <= products.size() && selection > 0) {
 				int productQuantity = captureNumber("Quantity: " + "\n");
-				Product productSelected = productsToShow.get(selection);
+				FlowerShop_stock productSelected = productsToShow.get(selection);
 				ProductforSale productForSale = new ProductforSale(productSelected, productQuantity);
-
 				boolean enoughStock = service.checkStock(productForSale);
 				if(selection <= products.size() && selection > 0){
 					if(enoughStock == false){
@@ -289,10 +292,28 @@ public class Main {
 					}
 				}
 
+				// controlar si el prod esta repetido
 
-				ticketDetail.add(productForSale);
-				totalAmount = totalAmount + productSelected.getPrice() * productForSale.getQuantity();
-			} else {
+				boolean noRepeat = false;
+					if (productForSale.getProduct().getDecoration() != null) {
+					noRepeat = service.checkExistOnTicket(ticketDetail, productForSale.getProduct().getDecoration().getName());
+					} else if (productForSale.getProduct().getFlower() != null) {
+					noRepeat = service.checkExistOnTicket(ticketDetail, productForSale.getProduct().getFlower().getName());
+					} else if (productForSale.getProduct().getTree() != null) {
+					noRepeat = service.checkExistOnTicket(ticketDetail, productForSale.getProduct().getTree().getName());
+					}
+				if(noRepeat == false) {
+					ticketDetail.add(productForSale);
+					totalAmount = totalAmount + productForSale.getPrice() * productForSale.getQuantity();
+				} else {
+					System.out.println("The product already exists in the ticket.");
+				}
+
+
+
+				//
+			} else if (selection > 0){
+
 				System.out.println("Product not included in the list, try again");
 			}
 		} while (selection != 0);
@@ -302,29 +323,44 @@ public class Main {
 			System.out.println("\n" + "** Ticket detail **" + "\n");
 
 			for (ProductforSale productforSale : ticketDetail) {
-				System.out.println(productforSale.getProduct() + " " + productforSale.getQuantity());
+				if (productforSale.getProduct().getDecoration() != null) {
+					System.out.println("Product: " + productforSale.getProduct().getDecoration().getName() + " price: "
+							+ productforSale.getProduct().getDecoration().getPrice()  + " quantity: " + productforSale.getQuantity());
+				} else if (productforSale.getProduct().getFlower() != null) {
+					System.out.println("Product: " + productforSale.getProduct().getFlower().getName() + " price: "
+							+ productforSale.getProduct().getFlower().getPrice()  + " quantity: " + productforSale.getQuantity());
+				} else if (productforSale.getProduct().getTree() != null) {
+					System.out.println("Product: " + productforSale.getProduct().getTree().getName() + " price: "
+							+ productforSale.getProduct().getTree().getPrice()  + " quantity: " + productforSale.getQuantity());
+				}
+
 			}
 			System.out.println("\n" + "Total amount: " + totalAmount + "\n");
 
 			Ticket ticket = new Ticket(ticketDetail);
-			service.createTicket(ticket);
-			
-			mainMenu();
+			boolean ticketOk = service.createTicket(ticket);
+			if(!ticketOk) {
+				System.err.println("Unable to create ticket");
+			}else {
+				System.out.println("Ticket generated succefully");
+			}
 		}
+		mainMenu();
+
 
 	}
 
 	private static void invoiceSum() {
 
 		try {
-		System.out.println("\n" + "** Total sales ammount:  **" + "\n");
-		System.out.println(service.sumAllTickets());
-		System.out.println("\n");
+			System.out.println("\n" + "** Total sales amount:  **" + "\n");
+			System.out.println(service.sumAllTickets());
+			System.out.println("\n");
 
 		} catch (SumMethodException e) {
-			System.err.println("\n" + "There has been an error, please try again" + "\n");
+			System.err.println("\n" + "There has been an error getting total sales, please try again" + "\n");
 		}
-		
+
 		mainMenu();
 
 	}
@@ -368,5 +404,5 @@ public class Main {
 
 		} while (datoDouble == -1.0);
 		return datoDouble;
-	}*/
+	}
 }

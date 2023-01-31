@@ -58,17 +58,28 @@ public class Repository implements Repo{
     @Override
     public boolean findbyName(String name, String type){
         boolean found = false;
+        FlowerShop_stock product;
         if (type.equals("Flower")){
-            if(stock_collection.find(eq("flower.name", name)) != null){
-                found = true;
+            product = stock_collection.find(Filters.eq("flower.name", name)).first();
+            if (product != null){
+                if(product.getFlower().getName().equals(name)){
+                    found = true;
+                }
             }
+
         } else if (type.equals("Tree")){
-            if(stock_collection.find(eq("tree.name", name)) != null){
-                found = true;
+            product = stock_collection.find(Filters.eq("tree.name", name)).first();
+            if (product != null){
+                if(product.getTree().getName().equals(name)){
+                    found = true;
+                }
             }
         } else {
-            if(stock_collection.find(eq("decoration.name", name)) != null){
-                found = true;
+            product = stock_collection.find(Filters.eq("decoration.name", name)).first();
+            if (product != null){
+                if(product.getDecoration().getName().equals(name)){
+                    found = true;
+                }
             }
         }
         return found;
