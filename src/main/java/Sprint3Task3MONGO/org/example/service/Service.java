@@ -98,12 +98,12 @@ public class Service implements Serv{
                     }
                     }
                 else if (proSafeListIn.get(index).getProduct().getTree() != null) {
-                if(proSafeListIn.get(index).getProduct().getTree().equals(nameIn)){
+                if(proSafeListIn.get(index).getProduct().getTree().getName().equals(nameIn)){
                     exit =true;
                     resul = true;
                 }
                 } else if (proSafeListIn.get(index).getProduct().getFlower() != null) {
-                if(proSafeListIn.get(index).getProduct().getFlower().equals(nameIn)){
+                if(proSafeListIn.get(index).getProduct().getFlower().getName().equals(nameIn)){
                     exit =true;
                     resul = true;
                 }

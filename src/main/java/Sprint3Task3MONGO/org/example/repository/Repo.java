@@ -2,8 +2,6 @@ package Sprint3Task3MONGO.org.example.repository;
 
 import Sprint3Task3MONGO.org.example.domain.*;
 import org.bson.types.ObjectId;
-
-import java.io.IOException;
 import java.util.List;
 
 public interface Repo {
