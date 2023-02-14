@@ -26,7 +26,7 @@ public class Repository implements Repo{
     //region ATRIBUTES
     CodecProvider pojoCodecProvider = PojoCodecProvider.builder().automatic(true).build();
     CodecRegistry pojoCodecRegistry = fromRegistries(getDefaultCodecRegistry(), fromProviders(pojoCodecProvider));
-    String uri = "mongodb+srv://PauCala:P4uC4l4br3s@cluster0.hsyllwj.mongodb.net/?retryWrites=true&w=majority";
+    String uri = "mongodb+srv://USER:PASSWORD@cluster0.hsyllwj.mongodb.net/?retryWrites=true&w=majority";
     MongoClient mongoClient = MongoClients.create(uri);
     MongoDatabase database = mongoClient.getDatabase("FlowerShop").withCodecRegistry(pojoCodecRegistry);
 
